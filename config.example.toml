@@ -1,0 +1,18 @@
+[storage]
+# Relative to this TOML file, not the shell working directory.
+database = "data/astock.sqlite3"
+
+[sync]
+# Backwards-compatible default. CLI --datasets all selects every extension.
+datasets = ["bars"]
+# For daily collection of all requested fields, replace the line above with:
+# datasets = ["bars", "valuation", "dividends", "profile", "suspension", "delisting"]
+# Suspension sync queries one explicit/default day; historical days use refresh.
+# Delisting currently covers confirmed SZ termination dates only; SH/BJ unknown.
+history_start = "1990-12-19"
+overlap_days = 7
+min_interval = 1.0
+max_attempts = 3
+backoff_seconds = 1.0
+circuit_failures = 5
+request_timeout = 60.0

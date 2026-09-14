@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "astock-raw"
+version = "0.2.0"
+description = "Single-source AKShare A-share raw daily data collector"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["akshare>=1.18.0,<2", "pandas>=2.0,<4"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+parquet = ["pyarrow>=18"]
+
+[project.scripts]
+astock = "astock.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
